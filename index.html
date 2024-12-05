@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Food Subscription</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff; /* Dark green background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #F7B660; /* Soft yellow-orange */
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            width: 300px;
+        }
+
+        .container h1 {
+            color: #6E6349; /* Earthy brown */
+            font-size: 18px;
+        }
+
+        .container h2 {
+            color: #79998A; /* Muted greenish-grey */
+            font-size: 16px;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        input[type="text"], input[type="submit"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+
+        input[type="text"] {
+            background-color: #C69C65; /* Soft beige */
+            color: #242D26; /* Dark text color for contrast */
+        }
+
+        input[type="submit"] {
+            background-color: #6E6349; /* Earthy brown */
+            color: white;
+            cursor: pointer;
+        }
+
+        .note {
+            font-size: 14px;
+            margin-top: 15px;
+            color: #242D26; /* Dark green for text */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ПОДПИСКА НА КОРМ ДЛЯ ДОМАШНИХ ЖИВОТНЫХ</h1>
+        <h2>PETRIS</h2>
+        <form id="request-form">
+            <input type="text" id="phone" name="phone" placeholder="Телефон" required>
+            <input type="submit" value="Оставить заявку">
+        </form>
+        <div class="note">
+            Свяжемся с вами в течение 5 минут и рассчитаем точную стоимость
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('request-form');
+            
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const phone = document.getElementById('phone').value;
+                const botToken = '7855720539:AAHyDJFkgCTKOJZlDAhhTqU-H1ad00kXkCc';
+                const chatId = '-1002470431906'; // Replace with your chat ID
+                const message = `Новый запрос от:\nТелефон: ${phone}`;
+
+                const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        chat_id: chatId,
+                        text: message
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.ok) {
+                        alert('Ваш запрос был отправлен успешно!');
+                        form.reset();
+                    } else {
+                        throw new Error('Ошибка при отправке сообщения');
+                    }
+                })
+                .catch(error => {
+                    alert('Ошибка отправки запроса. Пожалуйста, попробуйте снова.');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
