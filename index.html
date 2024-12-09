@@ -6,7 +6,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #ffffff; /* Dark green background */
+            background-color: #ffffff;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -22,18 +22,26 @@
             width: 300px;
         }
 
-        .container img {
-            width: 100%; /* Make the image fit the width of the container */
+        /* Image container with a background */
+        .image-container {
+            background-color: #ffcc99; /* Light orange background for the image */
+            padding: 20px;
             border-radius: 15px;
+            margin-bottom: 15px; /* Space between the image and text */
+        }
+
+        .image-container img {
+            width: 100%;
+            border-radius: 10px;
         }
 
         .container h1 {
-            color: #ffffff; /* Earthy brown */
+            color: #ffffff;
             font-size: 18px;
         }
 
         .container h2 {
-            color: #ffffff; /* Muted greenish-grey */
+            color: #ffffff;
             font-size: 16px;
         }
 
@@ -50,12 +58,12 @@
         }
 
         input[type="text"] {
-            background-color: #ffffff; /* Soft beige */
-            color: #242D26; /* Dark text color for contrast */
+            background-color: #ffffff;
+            color: #242D26;
         }
 
         input[type="submit"] {
-            background-color: #6E6349; /* Earthy brown */
+            background-color: #6E6349;
             color: white;
             cursor: pointer;
         }
@@ -63,14 +71,16 @@
         .note {
             font-size: 14px;
             margin-top: 15px;
-            color: #242D26; /* Dark green for text */
+            color: #242D26;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Image inserted above the text -->
-        <img src="https://i.ibb.co.com/d7L9r8Q/ad-removebg-preview.png" alt="Pet Image">
+        <!-- Image container with background -->
+        <div class="image-container">
+            <img src="https://w7.pngwing.com/pngs/858/194/png-transparent-cute-pet-cats-and-dogs-animal-pictures-puppy-dog.png" alt="Pet Image">
+        </div>
 
         <h1>ПОДПИСКА НА КОРМ ДЛЯ ДОМАШНИХ ЖИВОТНЫХ</h1>
         <h2>PETRIS</h2>
